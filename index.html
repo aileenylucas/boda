@@ -306,69 +306,16 @@
     text-align: center;
     margin-bottom: 2rem;
   }
-  .rsvp-form { display: flex; flex-direction: column; gap: 12px; }
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  .rsvp-actions {
+    text-align: center;
   }
-  .form-label {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #888;
-  }
-  .form-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #333;
-    padding: 10px 0;
-    color: #F2F6EC;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.3s;
-    width: 100%;
-  }
-  .form-input:focus { border-color: #73A360; }
-  .form-input option { background: #243028; }
-  .radio-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 4px;
-  }
-  .radio-opt {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-  }
-  .radio-opt input[type=radio] { accent-color: #73A360; }
-  .radio-opt span {
-    font-size: 12px;
-    font-weight: 300;
-    color: #AAA;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .submit-btn {
-    margin-top: 1.5rem;
-    padding: 16px;
-    background: #73A360;
-    border: none;
-    color: #243028;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 0.3s;
-  }
-  .submit-btn:hover { opacity: 0.85; }
 
   .gift-section { background: #E5EDD8; }
+  .gift-question {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+  }
   .gift-box {
     margin-top: 1.5rem;
     padding: 1.5rem;
@@ -409,27 +356,6 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #4A5A44;
-  }
-
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 2rem 0;
-  }
-  .success-msg.show { display: block; }
-  .success-icon { font-size: 32px; margin-bottom: 1rem; color: #73A360; }
-  .success-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    color: #F2F6EC;
-    font-style: italic;
-  }
-  .success-sub {
-    font-size: 11px;
-    color: #666;
-    margin-top: 0.5rem;
-    letter-spacing: 0.1em;
   }
 
   #music-btn {
@@ -552,7 +478,7 @@
 
     <div class="gift-section section fade-section">
       <div class="section-label">Regalo</div>
-      <div class="section-title" style="font-size:24px;">Querés hacernos un regalo?</div>
+      <div class="section-title gift-question">¿Querés hacernos un regalo?</div>
       <div class="gift-box">
         <div class="gift-bank">
           <strong>Scotiabank</strong>
@@ -570,39 +496,10 @@
       <div class="rsvp-title">¿Contamos con vos?</div>
       <div class="rsvp-subtitle">Por favor confirmá antes del 30 de noviembre</div>
 
-      <div id="rsvp-form-wrap">
-        <div class="rsvp-form">
-          <div class="form-field">
-            <label class="form-label">Nombre completo</label>
-            <input class="form-input" id="rsvp-name" type="text" placeholder="Tu nombre y apellido">
-          </div>
-          <div class="form-field">
-            <label class="form-label">¿Asistirás?</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="attend" value="si"> <span>Sí, allí estaré</span></label>
-              <label class="radio-opt"><input type="radio" name="attend" value="no"> <span>No puedo, lo siento</span></label>
-            </div>
-          </div>
-          <div class="form-field">
-            <label class="form-label">Restricciones alimentarias</label>
-            <select class="form-input" id="rsvp-food">
-              <option value="No">No</option>
-              <option value="Vegetariano">Vegetariano</option>
-              <option value="Celíaco">Celíaco</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label class="form-label">Una canción que no puede faltar</label>
-            <input class="form-input" id="rsvp-song" type="text" placeholder="Artista — Canción">
-          </div>
-          <button class="submit-btn" onclick="submitRSVP()">Confirmar asistencia</button>
-        </div>
-      </div>
-
-      <div class="success-msg" id="rsvp-success">
-        <div class="success-icon">✦</div>
-        <div class="success-text">¡Gracias! Te esperamos.</div>
-        <div class="success-sub">Nos llena de alegría contar con tu presencia</div>
+      <div class="rsvp-actions">
+        <a class="map-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeT8Lg5l7_gK2DAa8c8840hVhzaTjM7ZZr4TTZgnKdr-SUIqw/viewform" target="_blank" rel="noopener noreferrer">
+          Confirmar asistencia
+        </a>
       </div>
     </div>
 
@@ -654,29 +551,6 @@ function initObserver() {
   }, { threshold: 0.15 });
   els.forEach(el => obs.observe(el));
   els[0] && els[0].classList.add('visible');
-}
-
-function submitRSVP() {
-  const name = document.getElementById('rsvp-name').value.trim();
-  const attend = document.querySelector('input[name=attend]:checked');
-  if (!name || !attend) {
-    alert('Por favor completá tu nombre y confirmá si asistirás.');
-    return;
-  }
-
-  const food = document.getElementById('rsvp-food').value;
-  const attendValue = attend.value === 'si' ? 'Sí, allí estaré' : 'No puedo, lo siento';
-
-  const url = 'https://docs.google.com/forms/d/e/1FAIpQLSeT8Lg5l7_gK2DAa8c8840hVhzaTjM7ZZr4TTZgnKdr-SUIqw/formResponse'
-    + '?entry.559352220=' + encodeURIComponent(name)
-    + '&entry.877086558=' + encodeURIComponent(attendValue)
-    + '&entry.1751303409=' + encodeURIComponent(food);
-
-  const beacon = new Image();
-  beacon.src = url;
-
-  document.getElementById('rsvp-form-wrap').style.display = 'none';
-  document.getElementById('rsvp-success').classList.add('show');
 }
 </script>
 
