@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Aileen & Lucas//Boda//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boda-aileen-lucas-20261219@aileenylucas.github.io
+DTSTAMP:20260825T210000Z
+DTSTART;TZID=America/Montevideo:20261219T200000
+DTEND;TZID=America/Montevideo:20261219T230000
+SUMMARY:Boda Aileen & Lucas
+DESCRIPTION:Con mucha alegría te invitamos a celebrar con nosotros este día tan especial.
+LOCATION:La Soñada, Av. Gral. Artigas 15800, Ciudad de la Costa, Uruguay
+END:VEVENT
+END:VCALENDAR
