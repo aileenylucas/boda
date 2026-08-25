@@ -4,6 +4,12 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .inv-root {
     background: #F2F6EC;
     color: #243028;
@@ -20,6 +26,7 @@
     justify-content: center;
   }
   .screen.active { display: flex; }
+  #screen-main.active { display: block; }
 
   /* ---- COVER ---- */
   #screen-cover {
@@ -463,12 +470,10 @@
 
   .fade-section {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 0.7s ease;
   }
   .fade-section.visible {
     opacity: 1;
-    transform: translateY(0);
   }
 </style>
 
@@ -630,6 +635,7 @@ let musicPlaying = false;
 function openInvitation() {
   document.getElementById('screen-cover').classList.remove('active');
   document.getElementById('screen-main').classList.add('active');
+  window.scrollTo(0, 0);
   setTimeout(initObserver, 100);
   startMusic();
 }
